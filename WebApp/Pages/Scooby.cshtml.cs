@@ -9,6 +9,9 @@ namespace WebApp.Pages
         {
         }
 
-        
+        public void OnPost()
+        {
+            
+        }
     }
 }
