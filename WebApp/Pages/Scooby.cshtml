@@ -2,9 +2,27 @@
 @model WebApp.Pages.ScoobyModel
 @{
 }
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-success">@Model.Message</div>
+}
 
-<form method = "post" novalidate>
-    <label>Namn:</label>
-    <input type="text" name="Name"/>
-    <button type="submit">Sicka</button>
+<form method="post" novalidate>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Form.Name"></label>
+        <input asp-for="Form.Name" class="form-control" />
+        <span asp-validation-for="Form.Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Form.Email"></label>
+        <input asp-for="Form.Email" class="form-control" />
+        <span asp-validation-for="Form.Email" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Skicka</button>
 </form>
+
+<partial name="_ValidationScriptsPartial" />
